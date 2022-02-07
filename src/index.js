@@ -1,11 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 import App from './App';
+import AlgorithmProvider from './context/AlgorithmContext';
+import './index.css';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <AlgorithmProvider>
+      <App />
+    </AlgorithmProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );
