@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
-import AlgorithmProvider from './context/AlgorithmContext';
-import ThemeProvider from './context/ThemeContext';
+import AlgorithmProvider from './contexts/AlgorithmContext';
+import ThemeProvider from './contexts/ThemeContext';
 import './index.css';
 
 ReactDOM.render(
