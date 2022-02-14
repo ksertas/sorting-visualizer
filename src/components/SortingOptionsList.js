@@ -19,16 +19,11 @@ export default function SortingOptionsList() {
           valueLabelDisplay="auto"
           step={1}
           min={5}
-          max={200} />
+          max={100} />
       </li>
       <li className='py-2 ml-[-16px] flex flex-col justify-center items-start cursor-pointer'>
         <FormGroup>
           <FormControlLabel control={<Checkbox size='medium' />} label={<Typography fontSize={'20px'}>Invert bars</Typography>} labelPlacement='start' />
-        </FormGroup>
-      </li>
-      <li className='py-2 ml-[-16px] flex flex-col justify-center items-start cursor-pointer'>
-        <FormGroup>
-          <FormControlLabel control={<Checkbox size='medium' />} label={<Typography fontSize={'20px'}>Show bar sizes</Typography>} labelPlacement='start' />
         </FormGroup>
       </li>
     </ul>
