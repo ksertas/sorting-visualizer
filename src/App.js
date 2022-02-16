@@ -1,6 +1,6 @@
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import MainLayout from './components/MainLayout';
 import Navbar from './components/Navbar';
-import OptionsBar from './components/OptionsBar';
 
 const theme = createTheme({
   typography: {
@@ -19,7 +19,7 @@ export default function App() {
     <ThemeProvider theme={theme}>
       <div className='h-screen bg-white dark:bg-black'>
         <Navbar />
-        <OptionsBar />
+        <MainLayout />
       </div>
     </ThemeProvider>
   );

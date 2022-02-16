@@ -21,7 +21,7 @@ for (let i = 1; i < range + 1; i++) {
 
 export default function ArrayBars() {
   return (
-    <div className='bg-container-dark w-10/12 h-[15rem] mx-auto mt-6 block relative'>
+    <div className='bg-container-dark w-10/12 h-[15rem] mx-auto mt-6 block relative lg:my-auto lg:col-span-3 xl:col-span-4'>
       {generatedDivs.map((div) => {
         return div;
       })}
