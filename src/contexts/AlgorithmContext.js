@@ -3,11 +3,13 @@ import React, { createContext, useState } from 'react';
 export const AlgorithmContext = createContext(null);
 
 export default function AlgorithmProvider({children}) {
-  const [algorithm, setAlgorithm] = useState('bubbleSort');
+  const [selectedAlgorithm, setSelectedAlgorithm] = useState('bubble sort');
+  const availableAlgorithms = ['bubble sort', 'quick sort', 'merge sort', 'selection sort'];
 
   const contextData = {
-    algorithm: algorithm,
-    setAlgorithm: setAlgorithm
+    selectedAlgorithm: selectedAlgorithm,
+    setSelectedAlgorithm: setSelectedAlgorithm,
+    availableAlgorithms: availableAlgorithms
   };
 
   return (
