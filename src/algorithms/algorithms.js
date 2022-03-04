@@ -1,5 +1,16 @@
+const blue = '#4295d6';
+const red = '#C62F2F';
+const green = '#2FC659';
+const yellow = '#C68A2F';
+const orange = 'darkorange';
+
+function updateColor(div, color) {
+  div.style.backgroundColor = color;
+}
+
 // not optimized version
-function bubbleSort() {
+async function bubbleSort() {
+  let nSorted = 0;
   // get all the bars' generated height and store in array to use in algorithm comparisons.
   // this is an alternative to getting the height style of a div, splicing the string and parsing the int inside the algorithm block.
   const arr = document.getElementsByClassName('bar');
@@ -10,7 +21,7 @@ function bubbleSort() {
   
   // go through algorithm using nList[] values and swap div height styles at same indexes.
   for (let i = 0; i < nList.length; i++) {
-    for (let j = 0; j < nList.length; j++) {
+    for (let j = 0; j < nList.length - nSorted; j++) {
       if (nList[j] > nList[j + 1]) {
         let temp = nList[j];
         let tempHeight = arr[j].style.height;
@@ -19,9 +30,15 @@ function bubbleSort() {
         nList[j + 1] = temp;
         arr[j + 1].style.height = tempHeight;
       }
+      await new Promise((resolve) =>
+        setTimeout(() => {
+          resolve();
+        }, 3)
+      );
     }
+    nSorted++;
+    updateColor(arr[arr.length - nSorted], green);
   }
-  
 }
 
 function selectionSort(arr) {         

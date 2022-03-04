@@ -15,12 +15,13 @@ export default function ArrayBars() {
       width: `${generatedWidth}%`,
       height: `${generatedHeight}%`, 
       left: `${100 / arrayLength * parseFloat(i - 1)}%`,
-      bottom: 0
+      bottom: 0,
+      backgroundColor: '#4295d6'
     };
   
     let showHeight = (arrayLength <= 20) && (generatedHeight > 10);
 
-    generatedDivs.push(<div key={i} style={style} className={`bar bg-red-400 border-[1px] border-red-500 absolute block text-white text-center ${showHeight ? 'text-[.75rem]' : 'text-[0px]'}`}>{generatedHeight}</div>);
+    generatedDivs.push(<div key={i} style={style} className={`bar border-[1px] border-black absolute block text-white text-center ${showHeight ? 'text-[.75rem]' : 'text-[0px]'}`}>{generatedHeight}</div>);
   }
 
   return (
