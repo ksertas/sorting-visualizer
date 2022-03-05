@@ -1,8 +1,11 @@
 const blue = '#4295d6';
 const red = '#C62F2F';
 const green = '#2FC659';
+const darkGreen = '#188741';
 const yellow = '#C68A2F';
 const orange = 'darkorange';
+const emphasizeDelay = 10;
+const sortingDelay = 300;
 
 function updateColor(div, color) {
   div.style.backgroundColor = color;
@@ -12,6 +15,17 @@ function swap(div1, div2) {
   let tempHeight = div1.style.height;
   div1.style.height = div2.style.height;
   div2.style.height = tempHeight;
+}
+
+async function emphasizeBarsOnComplete(bars) {
+  for (let i = 0; i < bars.length; i++) {
+    updateColor(bars[i], darkGreen);
+    await new Promise((resolve) =>
+      setTimeout(() => {
+        resolve();
+      }, emphasizeDelay)
+    );
+  }
 }
 
 // not optimized version
@@ -37,12 +51,13 @@ async function bubbleSort() {
       await new Promise((resolve) =>
         setTimeout(() => {
           resolve();
-        }, 3)
+        }, sortingDelay)
       );
     }
     nSorted++;
     updateColor(arr[arr.length - nSorted], green);
   }
+  emphasizeBarsOnComplete(arr);
 }
 
 function selectionSort(arr) {         
