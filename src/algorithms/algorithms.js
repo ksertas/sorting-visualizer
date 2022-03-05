@@ -8,6 +8,12 @@ function updateColor(div, color) {
   div.style.backgroundColor = color;
 }
 
+function swap(div1, div2) {
+  let tempHeight = div1.style.height;
+  div1.style.height = div2.style.height;
+  div2.style.height = tempHeight;
+}
+
 // not optimized version
 async function bubbleSort() {
   let nSorted = 0;
@@ -24,11 +30,9 @@ async function bubbleSort() {
     for (let j = 0; j < nList.length - nSorted; j++) {
       if (nList[j] > nList[j + 1]) {
         let temp = nList[j];
-        let tempHeight = arr[j].style.height;
         nList[j] = nList[j + 1];
-        arr[j].style.height = arr[j + 1].style.height;
         nList[j + 1] = temp;
-        arr[j + 1].style.height = tempHeight;
+        swap(arr[j], arr[j + 1]);
       }
       await new Promise((resolve) =>
         setTimeout(() => {
