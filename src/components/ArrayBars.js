@@ -8,7 +8,7 @@ export default function ArrayBars() {
   let generatedDivs = [];
   for (let i = 1; i < arrayLength + 1; i++) {
     const generatedWidth = parseFloat(100 / arrayLength);
-    const generatedHeight = getRandomInt(1, 100);
+    const generatedHeight = getRandomInt(5, 100);
     
     let style = {
       position: 'absolute',
