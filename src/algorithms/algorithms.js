@@ -5,7 +5,7 @@ const darkGreen = '#188741';
 const yellow = '#C68A2F';
 const orange = 'darkorange';
 const emphasizeDelay = 10;
-const sortingDelay = 300;
+const sortingDelay = 5;
 
 function updateColor(div, color) {
   div.style.backgroundColor = color;
@@ -42,17 +42,21 @@ async function bubbleSort() {
   // go through algorithm using nList[] values and swap div height styles at same indexes.
   for (let i = 0; i < nList.length; i++) {
     for (let j = 0; j < nList.length - nSorted; j++) {
+      updateColor(arr[j], yellow);
       if (nList[j] > nList[j + 1]) {
+        updateColor(arr[j], red);
+        updateColor(arr[j + 1], red);
         let temp = nList[j];
         nList[j] = nList[j + 1];
         nList[j + 1] = temp;
         swap(arr[j], arr[j + 1]);
-      }
+      } 
       await new Promise((resolve) =>
         setTimeout(() => {
           resolve();
         }, sortingDelay)
       );
+      updateColor(arr[j], blue);
     }
     nSorted++;
     updateColor(arr[arr.length - nSorted], green);
