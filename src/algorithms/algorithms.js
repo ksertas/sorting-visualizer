@@ -91,17 +91,28 @@ const selectionSort = () => {
   emphasizeBarsOnComplete(arr);
 };
 
-const insertionSort = (arr) => {
-  for (let i = 1; i < arr.length; i++) {
-    let current = arr[i];
-    let j = i-1; 
-    while ((j > -1) && (current < arr[j])) {
-      arr[j+1] = arr[j];
+const insertionSort = () => {
+  let arr = prepareSort();
+
+  for (let i = 1; i < nList.length; i++) {
+    updateColor(arr[i - 1], green);
+    let current = nList[i];
+    updateColor(arr[i], yellow);
+    let j = i - 1; 
+    while ((j > -1) && (current < nList[j])) {
+      nList[j+1] = nList[j];
+      updateColor(arr[j + 1], yellow);
+      updateColor(arr[j], yellow);
+      updateColor(arr[j + 1], red);
+      updateColor(arr[j], red);
+      swap(arr[j + 1], arr[j]);
+      updateColor(arr[j + 1], green);
+      updateColor(arr[j], green);
       j--;
     }
-    arr[j+1] = current;
+    nList[j + 1] = current;
   }
-  return arr;
+  emphasizeBarsOnComplete(arr);
 };
 
 export { bubbleSort, insertionSort, selectionSort };
