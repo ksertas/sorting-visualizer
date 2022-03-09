@@ -3,44 +3,42 @@ const red = '#C62F2F';
 const green = '#2FC659';
 const darkGreen = '#188741';
 const yellow = '#C68A2F';
-const orange = 'darkorange';
-const emphasizeDelay = 10;
-const sortingDelay = 5;
+const speed = 5;
+let sortingDelay = 0;
 let nList = [];
 
 // get all the bars' generated height and store in array to use in algorithm comparisons.
 // this is an alternative to getting the height style of a div, splicing the string and parsing the int inside the algorithm block.
-function prepareSort() {
+const prepareSort = () => {
   const arr = document.getElementsByClassName('bar');
   for (let i = 0; i < arr.length; i++) {
     nList.push(parseInt(arr[i].innerText));
   }
   return arr;
-}
+};
 
-function updateColor(div, color) {
-  div.style.backgroundColor = color;
-}
+const updateColor = (div, color) => {
+  setTimeout(() => {
+    div.style.backgroundColor = color;
+  }, sortingDelay+=speed);
+};
 
-function swap(div1, div2) {
-  let tempHeight = div1.style.height;
-  div1.style.height = div2.style.height;
-  div2.style.height = tempHeight;
-}
+const swap = (div1, div2) => {
+  setTimeout(() => {
+    let tempDiv = div1.style.height;
+    div1.style.height = div2.style.height;
+    div2.style.height = tempDiv;
+  }, sortingDelay+=speed);
+};
 
-async function emphasizeBarsOnComplete(bars) {
+const emphasizeBarsOnComplete = (bars) => {
   for (let i = 0; i < bars.length; i++) {
     updateColor(bars[i], darkGreen);
-    await new Promise((resolve) =>
-      setTimeout(() => {
-        resolve();
-      }, emphasizeDelay)
-    );
   }
-}
+};
 
 // not optimized version
-async function bubbleSort() {
+const bubbleSort = () => {
   let nSorted = 0;
   let arr = prepareSort();
 
@@ -56,37 +54,44 @@ async function bubbleSort() {
         nList[j + 1] = temp;
         swap(arr[j], arr[j + 1]);
       } 
-      await new Promise((resolve) =>
-        setTimeout(() => {
-          resolve();
-        }, sortingDelay)
-      );
       updateColor(arr[j], blue);
     }
     nSorted++;
     updateColor(arr[arr.length - nSorted], green);
   }
   emphasizeBarsOnComplete(arr);
-}
+};
 
-function selectionSort(arr) {         
-  for(let i = 0; i < arr.length; i++) {
-    let min = i;
-    for(let j = i+1; j < arr.length; j++){
-      if(arr[j] < arr[min]) {
-        min=j; 
+const selectionSort = () => {
+  let nSorted = 0;
+  let arr = prepareSort();
+           
+  for (let i = 0; i < nList.length; i++) {
+    let min = nSorted;
+    for (let j = 0 + nSorted; j < nList.length; j++) {
+      updateColor(arr[j], yellow);
+      if (nList[j] < nList[min]) {
+        updateColor(arr[min], blue);
+        min=j;
+        updateColor(arr[min], red);
       }
+      updateColor(arr[j], blue);
+      updateColor(arr[min], red);
     }
-    if (min != i) {
-      let tmp = arr[i]; 
-      arr[i] = arr[min];
-      arr[min] = tmp;      
+    updateColor(arr[min], blue);
+    if (min != nSorted) {
+      let tmp = nList[i]; 
+      nList[i] = nList[min];
+      nList[min] = tmp;   
+      swap(arr[i], arr[min]);   
     }
+    updateColor(arr[nSorted], green);
+    nSorted++;
   }
-  return arr;
-}
+  emphasizeBarsOnComplete(arr);
+};
 
-function insertionSort(arr) {
+const insertionSort = (arr) => {
   for (let i = 1; i < arr.length; i++) {
     let current = arr[i];
     let j = i-1; 
@@ -97,7 +102,7 @@ function insertionSort(arr) {
     arr[j+1] = current;
   }
   return arr;
-}
+};
 
 export { bubbleSort, insertionSort, selectionSort };
 
