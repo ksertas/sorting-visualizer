@@ -6,6 +6,17 @@ const yellow = '#C68A2F';
 const orange = 'darkorange';
 const emphasizeDelay = 10;
 const sortingDelay = 5;
+let nList = [];
+
+// get all the bars' generated height and store in array to use in algorithm comparisons.
+// this is an alternative to getting the height style of a div, splicing the string and parsing the int inside the algorithm block.
+function prepareSort() {
+  const arr = document.getElementsByClassName('bar');
+  for (let i = 0; i < arr.length; i++) {
+    nList.push(parseInt(arr[i].innerText));
+  }
+  return arr;
+}
 
 function updateColor(div, color) {
   div.style.backgroundColor = color;
@@ -31,14 +42,8 @@ async function emphasizeBarsOnComplete(bars) {
 // not optimized version
 async function bubbleSort() {
   let nSorted = 0;
-  // get all the bars' generated height and store in array to use in algorithm comparisons.
-  // this is an alternative to getting the height style of a div, splicing the string and parsing the int inside the algorithm block.
-  const arr = document.getElementsByClassName('bar');
-  const nList = [];
-  for (let i = 0; i < arr.length; i++) {
-    nList.push(parseInt(arr[i].innerText));
-  }
-  
+  let arr = prepareSort();
+
   // go through algorithm using nList[] values and swap div height styles at same indexes.
   for (let i = 0; i < nList.length; i++) {
     for (let j = 0; j < nList.length - nSorted; j++) {
