@@ -115,5 +115,61 @@ const insertionSort = () => {
   emphasizeBarsOnComplete(arr);
 };
 
-export { bubbleSort, insertionSort, selectionSort };
+
+const quickSort = (nList, start, end, arr) => {
+  if (start < end){
+    let j = partition(nList, start, end, arr);
+    updateColor(arr[j], green);
+    quickSort(nList, start, j, arr);
+    quickSort(nList, j+1, end, arr);
+  }
+};
+
+const partition = (nList, start, end, arr) => {
+  let pivot = nList[start];
+  let i = start;
+  let j = end;
+
+  while (i < j){
+    do {
+      i++;
+    } while (nList[i] <= pivot);
+    do {
+      j--;
+    } while(nList[j] > pivot);
+    
+    if (i < j) {
+      updateColor(arr[i], yellow);
+      updateColor(arr[j], yellow);
+      updateColor(arr[i], red);
+      updateColor(arr[j], red);
+      let temp = nList[i];
+      nList[i] = nList[j];
+      nList[j] = temp;
+      swap(arr[i], arr[j]);
+      updateColor(arr[i], blue);
+      updateColor(arr[j], blue);
+    }
+  }
+  
+  updateColor(arr[start], yellow);
+  updateColor(arr[j], yellow);
+  updateColor(arr[start], red);
+  updateColor(arr[j], red);
+  let temp = nList[start];
+  nList[start] = nList[j];
+  nList[j] = temp;
+  swap(arr[start], arr[j]);
+  updateColor(arr[start], blue);
+  updateColor(arr[j], blue);
+
+  return j;
+};
+
+const runQuickSort = () => {
+  let arr = prepareSort();
+  quickSort(nList, 0, arr.length, arr);
+};
+
+export { bubbleSort, insertionSort, selectionSort, runQuickSort };
 
