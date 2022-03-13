@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/sorting-visualizer/static/css/main.65bb690e.css",
+    "main.js": "/sorting-visualizer/static/js/main.aac2d3a2.js",
+    "static/media/healthicons_medium-bars.svg": "/sorting-visualizer/static/media/healthicons_medium-bars.ddc977a4d0952d558e98c57b6915069b.svg",
+    "index.html": "/sorting-visualizer/index.html",
+    "main.65bb690e.css.map": "/sorting-visualizer/static/css/main.65bb690e.css.map",
+    "main.aac2d3a2.js.map": "/sorting-visualizer/static/js/main.aac2d3a2.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.65bb690e.css",
+    "static/js/main.aac2d3a2.js"
+  ]
+}
