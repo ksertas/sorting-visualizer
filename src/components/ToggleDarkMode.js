@@ -6,6 +6,6 @@ export default function ToggleDarkMode() {
   const {theme, enableDarkMode, disableDarkMode} = useContext(ThemeContext);
 
   return (
-    <button onClick={theme === 'dark' ? disableDarkMode : enableDarkMode} className='text-white'>{theme === 'dark' ? <BsSunFill /> : <BsMoonFill />}</button>
+    <button onClick={theme === 'dark' ? disableDarkMode : enableDarkMode} className='text-black-100 dark:text-white-100'>{theme === 'dark' ? <BsSunFill /> : <BsMoonFill />}</button>
   );
 }

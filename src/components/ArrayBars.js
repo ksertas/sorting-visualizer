@@ -22,14 +22,14 @@ export default function ArrayBars() {
     
       let showHeight = (arrayLength <= 20) && (generatedHeight > 10);
   
-      generatedDivs.push(<div key={i} style={style} className={`bar border-[1px] border-black absolute block text-white text-center ${showHeight ? 'text-[.75rem]' : 'text-[0px]'}`}>{generatedHeight}</div>);
+      generatedDivs.push(<div key={i} style={style} className={`bar border-[1px] border-black text-white absolute block text-center ${showHeight ? 'text-[.75rem]' : 'text-[0px]'}`}>{generatedHeight}</div>);
     }
   };
 
   generateNewArray();
 
   return (
-    <div className={`bg-container-dark ${invertBars ? 'rotate-180' : ''} w-10/12 h-[15rem] mx-auto mt-6 block relative lg:my-auto lg:col-span-3 xl:col-span-4`}>
+    <div className={`${invertBars ? 'rotate-180' : ''} w-10/12 h-[15rem] mx-auto mt-6 block relative lg:my-auto lg:col-span-3 xl:col-span-4`}>
       {generatedDivs.map((div) => {
         return div;
       })}

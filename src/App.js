@@ -17,7 +17,7 @@ const theme = createTheme({
 export default function App() {
   return (
     <ThemeProvider theme={theme}>
-      <div className='h-screen bg-white dark:bg-black'>
+      <div className='bg-blue-20 dark:bg-black h-screen'>
         <Navbar />
         <MainLayout />
       </div>

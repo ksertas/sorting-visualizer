@@ -6,9 +6,9 @@ export default function AlgorithmList() {
   const {selectedAlgorithm, setSelectedAlgorithm, availableAlgorithms} = useContext(AlgorithmContext);
 
   return (
-    <ul className='text-white text-xl'>
+    <ul>
       {availableAlgorithms.map((algorithmText, i) => {
-        return <li key={i} onClick={()=> setSelectedAlgorithm(algorithmText)} className='py-2 flex items-center group cursor-pointer focus:bg-white'><Button className='w-full' {...(algorithmText === selectedAlgorithm ? {variant: 'contained'} : {variant: 'outlined'})}>{algorithmText}</Button></li>;
+        return <li key={i} onClick={()=> setSelectedAlgorithm(algorithmText)} className='py-2'><Button className='w-full' color='primary' {...(algorithmText === selectedAlgorithm ? {variant: 'contained'} : {variant: 'outlined'})}>{algorithmText}</Button></li>;
       })}
     </ul>
   );
