@@ -7,7 +7,7 @@ export default function SortingOptionsList() {
 
   return (
     <ul className='text-white text-xl'>
-      <li className='py-2 flex flex-col justify-center items-start cursor-pointer'><span className=''>Sorting speed</span>
+      {/* <li className='py-2 flex flex-col justify-center items-start cursor-pointer'><span className=''>Sorting speed</span>
         <Slider aria-label='sorting speed'
           value={sortingSpeed ?? 1}
           onChange={(e) => setSortingSpeed(e.target.value)}
@@ -16,7 +16,7 @@ export default function SortingOptionsList() {
           marks
           min={0.25}
           max={1.75} />
-      </li>
+      </li> */}
       <li className='py-2 flex flex-col justify-center items-start cursor-pointer'><span className=''>Array length</span>
         <Slider aria-label='arrayLength length'
           value={arrayLength ?? 50}
