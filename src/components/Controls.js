@@ -9,13 +9,13 @@ export default function Controls() {
   const {isRunning, setRunning, isFinished} = useContext(AlgorithmContext);
 
   if (arrayLength !== 0) {
-    localStorage.setItem('speed', arrayLength);
+    localStorage.setItem('length', arrayLength);
   }
   
   const runAgain = () => {
     setArrayLength(0);
     setTimeout(() => {
-      setArrayLength(parseInt(localStorage.getItem('speed')));
+      setArrayLength(parseInt(localStorage.getItem('length')));
       setRunning(true);
     }, 0);
   };
@@ -23,7 +23,7 @@ export default function Controls() {
   const stopSort = () => {
     setArrayLength(0);
     setTimeout(() => {
-      setArrayLength(parseInt(localStorage.getItem('speed')));
+      setArrayLength(parseInt(localStorage.getItem('length')));
       setRunning(false);
     }, 0);
   };
