@@ -7,8 +7,10 @@ export default function AlgorithmProvider({children}) {
   const [selectedAlgorithm, setSelectedAlgorithm] = useState('Bubble sort');
   const availableAlgorithms = ['Bubble sort', 'Quicksort', 'Insertion sort', 'Selection sort'];
   const [isRunning, setRunning] = useState(false);
+  const [isFinished, setFinished] = useState(false);
 
   const runSelectedAlgorithm = () => {
+    setFinished(false);
     switch (selectedAlgorithm) {
     case 'Bubble sort':
       bubbleSort();
@@ -36,7 +38,7 @@ export default function AlgorithmProvider({children}) {
   }, [isRunning]);
   
   const checkIfSortIsDone = () => {
-    setInterval(() => {
+    const intervalID = setInterval(() => {
       let divs = document.querySelectorAll('.bar');
       let isSorted = 0;
       for (let i = 0; i < divs.length; i++) {
@@ -46,6 +48,8 @@ export default function AlgorithmProvider({children}) {
       }
       if (isSorted === divs.length) {
         setRunning(false);
+        setFinished(true);
+        clearInterval(intervalID);
       }
     }, 1000);
   };
@@ -55,7 +59,9 @@ export default function AlgorithmProvider({children}) {
     setSelectedAlgorithm: setSelectedAlgorithm,
     availableAlgorithms: availableAlgorithms,
     isRunning: isRunning,
-    setRunning: setRunning
+    setRunning: setRunning,
+    isFinished: isFinished,
+    setFinished: setFinished
   };
 
   return (

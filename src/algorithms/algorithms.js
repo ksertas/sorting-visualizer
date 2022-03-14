@@ -11,6 +11,9 @@ let nList = [];
 // this is an alternative to getting the height style of a div, splicing the string and parsing the int inside the algorithm block.
 const prepareSort = () => {
   const arr = document.getElementsByClassName('bar');
+  nList = [];
+  sortingDelay = 0;
+
   for (let i = 0; i < arr.length; i++) {
     nList.push(parseInt(arr[i].innerText));
   }
