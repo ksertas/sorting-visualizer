@@ -17,6 +17,7 @@ const prepareSort = () => {
   return arr;
 };
 
+// 'arguments' object is not present in arrow functions; regular function is used.
 function updateColor(div, color) {
   setTimeout(() => {
     div.style.backgroundColor = color;
