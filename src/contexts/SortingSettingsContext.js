@@ -4,7 +4,7 @@ export const SortingSettingsContext = createContext(null);
 
 export default function SortingSettingsProvider({children}) {
   const [sortingSpeed, setSortingSpeed] = useState(1);
-  const [arrayLength, setArrayLength] = useState(50);
+  const [arrayLength, setArrayLength] = useState(localStorage.getItem('length') ? parseInt(localStorage.getItem('length')) : 50);
   const [invertBars, setInvertBars] = useState(false);
 
   const contextData = {
