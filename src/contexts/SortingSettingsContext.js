@@ -1,4 +1,4 @@
-import React, { createContext, useState } from 'react';
+import React, { createContext, useEffect, useState } from 'react';
 
 export const SortingSettingsContext = createContext(null);
 
@@ -14,6 +14,17 @@ export default function SortingSettingsProvider({children}) {
     setArrayLength: setArrayLength,
     invertBars: invertBars,
     setInvertBars: setInvertBars
+  };
+
+  useEffect(() => {
+    resetBackgroundColors();
+  }, [arrayLength]);
+  
+  const resetBackgroundColors = () => {
+    let divs = document.querySelectorAll('.bar');
+    for (let i = 0; i < divs.length; i++) {
+      divs[i].style.backgroundColor = '#4295d6';
+    }
   };
   
   
