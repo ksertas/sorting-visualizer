@@ -6,7 +6,7 @@ export default function SortingOptionsList() {
   const {sortingSpeed, setSortingSpeed, arrayLength, setArrayLength, invertBars, setInvertBars} = useContext(SortingSettingsContext);
 
   useEffect(() => {
-    setInvertBars(localStorage.getItem('invert') === 'true' ? true : false);
+    setInvertBars(localStorage.getItem('invert') === 'true');
   }, []);
 
   const handleInvert = (e) => {
