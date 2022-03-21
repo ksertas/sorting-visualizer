@@ -1,9 +1,18 @@
 import { Checkbox, FormControlLabel, FormGroup, Slider, Typography } from '@mui/material';
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { SortingSettingsContext } from '../contexts/SortingSettingsContext';
 
 export default function SortingOptionsList() {
   const {sortingSpeed, setSortingSpeed, arrayLength, setArrayLength, invertBars, setInvertBars} = useContext(SortingSettingsContext);
+
+  useEffect(() => {
+    setInvertBars(localStorage.getItem('invert') === 'true' ? true : false);
+  }, []);
+
+  const handleInvert = (e) => {
+    localStorage.setItem('invert', e.target.checked);
+    setInvertBars(e.target.checked);
+  };
 
   return (
     <ul className='text-white text-xl'>
@@ -30,7 +39,7 @@ export default function SortingOptionsList() {
         <FormGroup>
           <FormControlLabel control={<Checkbox 
             checked={invertBars ?? false}
-            onChange={(e) => setInvertBars(e.target.checked)}
+            onChange={(e) => handleInvert(e)}
             size='medium'
           />} 
           label={<Typography fontSize={'20px'}>Invert bars</Typography>} labelPlacement='start' />
