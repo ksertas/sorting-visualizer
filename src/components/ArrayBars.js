@@ -22,7 +22,7 @@ export default function ArrayBars() {
     
       let showHeight = (arrayLength <= 20) && (generatedHeight > 10);
   
-      generatedDivs.push(<div key={i} style={style} className={`bar border-[1px] border-black text-white absolute block text-center ${showHeight ? 'text-[.75rem]' : 'text-[0px]'}`}>{generatedHeight}</div>);
+      generatedDivs.push(<div key={i} style={style} className={'bar border-[1px] border-black text-white absolute block text-center'}><span className={`${showHeight ? 'text-[0.75rem]' : 'text-[0px]'} ${invertBars ? 'rotate-180' : ''} block`}>{generatedHeight}</span></div>);
     }
   };
 
